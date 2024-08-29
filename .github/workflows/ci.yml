@@ -3,9 +3,10 @@ name: Automated Testing
 on:
   workflow_dispatch:  # Allows manual triggering
   schedule:
+    # Runs at 7:00 PM UTC every day
     - cron: '0 19 * * *'
+    # Runs at 9:00 PM UTC every day
     - cron: '0 21 * * *'
-
 
 jobs:
   test:
@@ -18,13 +19,15 @@ jobs:
     - name: Set up Java
       uses: actions/setup-java@v3
       with:
-        java-version: '11'  # Specify your Java version here
+        java-version: '21.0.4'  # Your Java version
+        distribution: 'temurin'  # Use the Temurin distribution
 
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
       with:
-        chrome-version: 'latest'  # Use the latest version of Chrome
+        chrome-version: 'latest'  # Install the latest version of Chrome
 
     - name: Run tests
       run: |
-        mvn clean test -Dbrowser=chrome  # Runs your tests on Chrome
+        mvn clean test -Dbrowser=chrome  # Runs your tests on Chrome using Maven
+
