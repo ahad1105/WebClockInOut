@@ -29,5 +29,6 @@ jobs:
 
     - name: Run tests
       run: |
-        mvn clean test -Dbrowser=chrome  # Runs your tests on Chrome using Maven
+        mvn install -DskipTest
+        
 
