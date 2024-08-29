@@ -1,11 +1,11 @@
 name: Automated Testing
 
 on:
-  on:
   workflow_dispatch:  # Allows manual triggering
   schedule:
     - cron: '0 19 * * *'
     - cron: '0 21 * * *'
+
 
 jobs:
   test:
